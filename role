@@ -1,0 +1,14 @@
+private String printTextPerRole(String[] roles, String[] textLines) {
+    StringBuilder output = new StringBuilder(); // переменная для сбора итога
+    for (String role : roles) { //цикл по всем переменным массива ролей
+        output.append(role + ":\n"); //добавление роли в итог:
+        for (int i = 0; i < textLines.length; i++) { //цикл проверки сценария на наличие роли
+            if (textLines[i].startsWith(role + ":")) { //проверяем если роль есть в строке сценария
+                //пишем номер строки, вставляем остатки строки за вычитом роли)
+                output.append((i+1) + ")" + textLines[i].substring(role.length() + 1) + "\n");
+            }
+        }
+        output.append("\n"); //запись переноса строки после одного прохода по сценарию
+    }
+    return output.toString(); //печать итога
+}
